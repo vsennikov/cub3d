@@ -14,6 +14,7 @@
 # define CUB3D_H
 
 # include "libft/libft.h"
+# include "gnl/get_next_line.h"
 # include <stdlib.h>
 # include <stdio.h> 
 
@@ -28,6 +29,9 @@ typedef struct s_map
 	char		*s_texture;
 	char		*w_texture;
 	char		*e_texture;
+	int			player_x;
+	int			player_y;
+	char		player_dir;
 } t_map;
 
 typedef struct s_data
@@ -40,5 +44,6 @@ typedef struct s_data
 
 //#parsing funcs
 int	name_validation(char *name);
+int	parser(t_data *data, char *file);
 
 #endif

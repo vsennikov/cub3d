@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:30:49 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/08/17 10:35:03 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/17 11:03:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,6 @@ int	main(int argc, char **argv)
 		return (ft_putstr_fd("Usage: ./cub3d <map_file.cub>\n", 2), 1);
 	name_validation(argv[1]);
 	data_init(&data);
+	parser(&data, argv[1]);
 	return (0);
 }
