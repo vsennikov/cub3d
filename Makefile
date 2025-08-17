@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
-SRCS = main.c 
+SRCS = main.c parser/parser_prep.c
 
 LIBFT_PATH = libft
 LIBFT = $(LIBFT_PATH)/libft.a

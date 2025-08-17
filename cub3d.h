@@ -15,6 +15,30 @@
 
 # include "libft/libft.h"
 # include <stdlib.h>
+# include <stdio.h> 
 
+typedef struct s_map
+{
+	char		**map;
+	int			width;
+	int			height;
+	char		*floor_color;
+	char		*ceiling_color;
+	char		*n_texture;
+	char		*s_texture;
+	char		*w_texture;
+	char		*e_texture;
+} t_map;
+
+typedef struct s_data
+{
+	t_map		*map;
+	void		*mlx;
+	void		*mlx_win_ptr;
+} t_data;
+
+
+//#parsing funcs
+int	name_validation(char *name);
 
 #endif
