@@ -6,23 +6,24 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:30:49 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/08/17 11:03:50 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/24 14:03:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	data_init(t_data *data)
+
+void	cleanup_data(t_data *data)
 {
-	data->map = malloc(sizeof(t_map));
-	if (!data->map)
+	if (data && data->map)
 	{
-		ft_putstr_fd("Memory allocation for map failed\n", 2);
-		exit(1);
+		if (data->parsed_file)
+			free_parsed_file(data->parsed_file);
+		if (data->map->map)
+			free_map_array(data->map->map);
+		free_textures(data);
+		free(data->map);
 	}
-	data->mlx = NULL;
-	data->mlx_win_ptr = NULL;
-	data->map->height = 2;
 }
 
 int	main(int argc, char **argv)
@@ -32,7 +33,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (ft_putstr_fd("Usage: ./cub3d <map_file.cub>\n", 2), 1);
 	name_validation(argv[1]);
-	data_init(&data);
+	data.map = malloc(sizeof(t_map));
+	if (!data.map)
+		error_exit("Memory allocation for map failed");
+	ft_bzero(data.map, sizeof(t_map));
 	parser(&data, argv[1]);
+	cleanup_data(&data);
 	return (0);
 }

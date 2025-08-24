@@ -1,0 +1,95 @@
+#include "../cub3d.h"
+
+char	*trim_whitespace(char *str)
+{
+	int		i;
+	int		j;
+	int		len;
+	char	*result;
+
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		i++;
+	j = ft_strlen(str) - 1;
+	while (j >= i && (str[j] == ' ' || str[j] == '\t' || 
+		str[j] == '\n' || str[j] == '\r'))
+		j--;
+	len = j - i + 1;
+	if (len <= 0)
+		return (NULL);
+	result = malloc(len + 1);
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, str + i, len);
+	result[len] = '\0';
+	return (result);
+}
+
+char	*trim_newlines(char *str)
+{
+	int		i;
+	int		len;
+	char	*result;
+
+	if (!str)
+		return (NULL);
+	len = ft_strlen(str);
+	i = len - 1;
+	while (i >= 0 && (str[i] == '\n' || str[i] == '\r'))
+	{
+		i--;
+		len--;
+	}
+	result = malloc(len + 1);
+	if (!result)
+		return (NULL);
+	ft_memcpy(result, str, len);
+	result[len] = '\0';
+	return (result);
+}
+
+int	is_valid_map_char(char c)
+{
+	return (c == '1' || c == '0' || c == 'N' || c == 'S' || 
+		c == 'E' || c == 'W' || c == ' ');
+}
+
+int	check_line(char *line, char *identifier)
+{
+	int	i;
+
+	if (!line || !identifier)
+		return (0);
+	i = ft_strlen(identifier);
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line[i] && line[i] != ' ' && line[i] != '\t' && 
+		line[i] != '\n' && line[i] != '\r')
+		i++;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	if (line[i] && line[i] != '\n' && line[i] != '\r' && line[i] != '\0')
+		return (0);
+	return (1);
+}
+
+int	check_color_line(char *line, char *identifier)
+{
+	int	i;
+
+	if (!line || !identifier)
+		return (0);
+	i =  ft_strlen(identifier);
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line[i] && ((line[i] >= '0' && line[i] <= '9') || line[i] == ',' || 
+		line[i] == ' ' || line[i] == '\t'))
+		i++;
+	while (line[i] && (line[i] == ' ' || line[i] == '\t'))
+		i++;
+	if (line[i] && line[i] != '\n' && line[i] != '\r' && line[i] != '\0')
+		return (0);
+	return (1);
+}
