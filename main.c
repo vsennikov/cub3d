@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/05 18:30:49 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/08/24 14:03:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/08/24 15:37:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	if (!data.map)
 		error_exit("Memory allocation for map failed");
 	ft_bzero(data.map, sizeof(t_map));
+	data.parsed_file = NULL;
 	parser(&data, argv[1]);
 	cleanup_data(&data);
 	return (0);

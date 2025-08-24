@@ -42,7 +42,7 @@ void	exit_err_par(char *msg, t_data *data, int fd)
 		}
 	}
 	ft_putstr_fd(msg, 2);
-	if (fd != 0)
+	if (fd > 0)
 		close(fd);
 	exit(EXIT_FAILURE);
 }
