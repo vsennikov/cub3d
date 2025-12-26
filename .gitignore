@@ -1,0 +1,16 @@
+*.o
+obj/
+
+cub3d
+
+
+.DS_Store
+*~
+
+.devcontainer
+
+# .gitignore
+# maps/
+extras
+minilibx
+subject.md
