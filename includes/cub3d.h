@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:13:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:14:51 by vsenniko         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:22:27 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,9 +208,6 @@ float				fixed_distance(t_player *p, float x, float y);
 
 /* Pixel utils */
 void				put_pixel(int x, int y, int color, t_game *game);
-
-/* Map functions */
-char				**getmap(t_game *game);
 
 /* Cleanup functions */
 int					close_window(t_game *game);
