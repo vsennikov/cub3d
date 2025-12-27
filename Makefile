@@ -17,7 +17,7 @@ LIBFT = $(LIBFT_PATH)/libft.a
 SRC_FILES = main.c
 
 RENDER_FILES = cleanup.c collision.c draw.c draw_floor_ceiling.c draw_map.c draw_wall.c \
-			   error_handler.c init_game.c init_player.c keyboard.c map.c math_utils.c \
+			   error_handler.c init_game.c init_player.c keyboard.c math_utils.c \
 			   pixel_utils.c player_movement.c raycasting.c raycasting_dda.c render.c \
 			   texture_loader.c texture_selector.c
 
