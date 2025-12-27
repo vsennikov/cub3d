@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_file.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/27 16:35:54 by vsenniko          #+#    #+#             */
+/*   Updated: 2025/12/27 17:10:27 by vsenniko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 char	**parse_file(int fd, t_data *data)
@@ -12,7 +24,8 @@ char	**parse_file(int fd, t_data *data)
 	return (read_file_lines(fd, data, parsed_file, capacity));
 }
 
-char	**read_file_lines(int fd, t_data *data, char **parsed_file, int capacity)
+char	**read_file_lines(int fd, t_data *data, char **parsed_file,
+		int capacity)
 {
 	int		file_end;
 	char	*line;
@@ -34,7 +47,8 @@ char	**read_file_lines(int fd, t_data *data, char **parsed_file, int capacity)
 	return (parsed_file);
 }
 
-char	**add_line_to_array(char **parsed_file, char *line, int *i, int *capacity)
+char	**add_line_to_array(char **parsed_file, char *line, int *i,
+		int *capacity)
 {
 	char	**temp_array;
 
@@ -76,7 +90,7 @@ int	is_valid_texture_file(char *path, t_data *data, int fd)
 	if (texture_fd < 0)
 	{
 		free(path);
-		exit_err_par("Error: Texture file does not exist or is not readable\n", 
+		exit_err_par("Error: Texture file does not exist or is not readable\n",
 			data, fd);
 	}
 	close(texture_fd);

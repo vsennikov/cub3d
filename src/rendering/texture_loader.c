@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/18 00:00:00 by chmarque         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:10:07 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ static void	init_texture_to_null(t_texture *tex)
 void	load_texture(t_texture *tex, char *path, t_game *game)
 {
 	init_texture_to_null(tex);
-	tex->img = mlx_xpm_file_to_image(game->mlx, path,
-			&tex->width, &tex->height);
+	tex->img = mlx_xpm_file_to_image(game->mlx, path, &tex->width,
+			&tex->height);
 	if (!tex->img)
 		error_texture(path, game);
-	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp,
-			&tex->line_len, &tex->endian);
+	tex->addr = mlx_get_data_addr(tex->img, &tex->bpp, &tex->line_len,
+			&tex->endian);
 	if (!tex->addr)
 	{
 		mlx_destroy_image(game->mlx, tex->img);

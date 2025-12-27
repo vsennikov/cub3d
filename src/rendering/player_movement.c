@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 06:01:16 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/18 06:01:18 by chmarque         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:09:56 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ static void	move_backward(t_player *player, float cos_a, float sin_a,
 	}
 }
 
-static void	move_left(t_player *player, float cos_a, float sin_a,
-		t_game *game)
+static void	move_left(t_player *player, float cos_a, float sin_a, t_game *game)
 {
 	float	new_x;
 	float	new_y;
@@ -42,8 +41,7 @@ static void	move_left(t_player *player, float cos_a, float sin_a,
 	}
 }
 
-static void	move_right(t_player *player, float cos_a, float sin_a,
-		t_game *game)
+static void	move_right(t_player *player, float cos_a, float sin_a, t_game *game)
 {
 	float	new_x;
 	float	new_y;
@@ -57,8 +55,7 @@ static void	move_right(t_player *player, float cos_a, float sin_a,
 	}
 }
 
-void	apply_movement(t_player *player, float cos_a, float sin_a,
-		t_game *game)
+void	apply_movement(t_player *player, float cos_a, float sin_a, t_game *game)
 {
 	if (player->player_down)
 		move_backward(player, cos_a, sin_a, game);

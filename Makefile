@@ -2,6 +2,7 @@ NAME = cub3d
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
+LIBMLX = -lmlx -lX11 -lXext -lm
 INCLUDES = -I includes -I libft -I minilibx -I .
 
 SRCDIR = src
@@ -10,10 +11,8 @@ RENDERDIR = src/rendering
 GNLDIR = gnl
 OBJDIR = obj
 LIBFT_PATH = libft
-MLX_PATH = minilibx
 
 LIBFT = $(LIBFT_PATH)/libft.a
-MLX = $(MLX_PATH)/libmlx.a
 
 SRC_FILES = main.c
 
@@ -37,27 +36,23 @@ OBJS = $(SRCS:%.c=$(OBJDIR)/%.o)
 
 all: $(LIBFT) $(MLX) $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT) $(MLX)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) -L$(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT)
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $(NAME) $(LIBMLX)
 
 $(OBJDIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_PATH)
 
-$(MLX):
-	$(MAKE) -C $(MLX_PATH)
-
 clean:
 	$(MAKE) -C $(LIBFT_PATH) clean
-	$(MAKE) -C $(MLX_PATH) clean
-	rm -rf $(OBJDIR)
+	@rm -rf $(OBJDIR)
 
 fclean: clean
 	$(MAKE) -C $(LIBFT_PATH) fclean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

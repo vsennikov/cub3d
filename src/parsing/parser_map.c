@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/27 16:36:10 by vsenniko          #+#    #+#             */
+/*   Updated: 2025/12/27 17:10:33 by vsenniko         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/cub3d.h"
 
 static int	validate_char_and_set_player(t_data *data, int i, int j, int fd)
@@ -38,7 +50,7 @@ void	validate_map_characters_and_player(t_data *data, int fd)
 		i++;
 	}
 	if (player_count != 1)
-		exit_err_par("Error: Map must contain exactly one player starting position\n", 
+		exit_err_par("Error: Map must contain exactly one player starting position\n",
 			data, fd);
 }
 

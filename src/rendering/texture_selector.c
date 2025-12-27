@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_selector.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/18 06:02:15 by chmarque         ###   ########.fr       */
+/*   Updated: 2025/12/27 17:10:10 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	select_texture(t_dda *dda, t_wall *wall, t_game *game)
 	else
 		wall->texture = get_texture_east_west(dda, game);
 	wall->tex_x = (int)(dda->wall_x * (float)wall->texture->width);
-	if ((dda->side == 0 && dda->ray_dir_x > 0)
-		|| (dda->side == 1 && dda->ray_dir_y < 0))
+	if ((dda->side == 0 && dda->ray_dir_x > 0) || (dda->side == 1
+			&& dda->ray_dir_y < 0))
 		wall->tex_x = wall->texture->width - wall->tex_x - 1;
 }
