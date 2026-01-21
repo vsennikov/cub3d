@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:13:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 13:24:31 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:17:40 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,6 +260,8 @@ char				*trim_newlines(char *str);
 int					is_valid_map_char(char c);
 int					check_line(char *line, char *identifier);
 int					check_color_line(char *line, char *identifier);
+void				parsed_file_failed(char *line, t_data *data, int fd,
+						int file_end);
 
 // Parser configuration
 int					parse_color_component(char *str, t_data *data, int fd);

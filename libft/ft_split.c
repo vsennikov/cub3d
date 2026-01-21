@@ -6,139 +6,94 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:27:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2024/09/20 17:50:08 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:19:54 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/** 
- * Allocates (with malloc(3)) and returns an array
- * of strings obtained by splitting ’s’ using the
- * character ’c’ as a delimiter. The array must end
- * with a NULL pointer.
- * 
- * @param s   
- * The string to be split
- * @param c     
- * The delimiter character.
- * 
- * @return
- * The array of new strings resulting from the split.
- * NULL if the allocation fails.
- * 
- * @note
- * If s contain only delimetr chars, we call special func
- * that returns **res with 1 el which = 0.
- * In other case we call trim to delete delimetr from begging
- * and end of str. Than call create_arr() which is calculating
- * numb of delimets + 2 (example: we have 2 words with 1 delim, in
- * that case we will create arr with size 3(2 for words and 1 for 
- * 0)). After that we start fullfill arr with substr().
- * Also free trimed_arr after trim() 
- */
-static char	**create_arr(char const *s, char c)
-{
-	char	**res;
-	int		i;
-	int		res_size;
 
-	res_size = 0;
-	i = 0;
-	while (s[i] != '\0')
-	{
-		if (s[i] == c)
-		{
-			while (s[i] == c && s[i] != '\0')
-				i++;
-			res_size++;
-		}
-		if (s[i] != '\0')
-			i++;
-	}
-	res = (char **)ft_calloc((res_size + 2), sizeof(char *));
-	if (res == NULL)
-		return (NULL);
-	res[res_size + 1] = 0;
-	return (res);
-}
-
-static void	*free_arr(char **res)
+static void	free_split(char **arr)
 {
 	int	i;
 
 	i = 0;
-	while (res[i] != 0)
+	while (arr[i])
 	{
-		free(res[i]);
+		free(arr[i]);
 		i++;
 	}
-	free(res);
-	return (NULL);
+	free(arr);
 }
 
-static char	**fullfill_arr(char const *s, char c, char **res)
+static size_t	ft_len(const char *s, char c)
 {
-	int		start_pos;
-	int		i;
-	char	*temp;
-	int		j;
+	size_t	ret;
 
-	i = 0;
-	start_pos = 0;
-	j = 0;
-	while (i <= (int)ft_strlen((char *)s))
+	ret = 0;
+	while (*s)
 	{
-		if (s[i] == c || s[i] == '\0')
+		if (*s != c)
 		{
-			temp = ft_substr(s, start_pos, i - start_pos);
-			if (temp == NULL)
-				return (free_arr(res));
-			res[j++] = temp;
-			while (i < (int)ft_strlen((char *)s) && s[i] == c && s[i + 1] == c)
-				i++;
-			start_pos = i + 1;
+			ret++;
+			while (*s && *s != c)
+				s++;
 		}
-		if (s[i] == '\0')
-			break ;
-		++i;
+		else
+			s++;
 	}
-	return (res);
+	return (ret);
 }
 
-static char	**arr_of_delim(void)
+static char	*substr_extractor(char const **s, char c)
 {
-	char	**res;
+	const char	*start;
+	size_t		len;
 
-	res = (char **)malloc(sizeof(char *));
-	if (res == NULL)
-		return (NULL);
-	res[0] = 0;
-	return (res);
+	start = *s;
+	len = 0;
+	while (*start && *start != c)
+	{
+		start++;
+		len++;
+	}
+	*s = start;
+	return (ft_substr(*s - len, 0, len));
+}
+
+static int	process_substring(char ***ret, const char **s, char c, size_t *i)
+{
+	if (**s != c)
+	{
+		(*ret)[*i] = substr_extractor(s, c);
+		if (!(*ret)[*i])
+		{
+			ft_free_split(*ret);
+			return (0);
+		}
+		(*i)++;
+	}
+	else
+		(*s)++;
+	return (1);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**res;
-	int		i;
-	char	*trimed;
+	char	**ret;
+	size_t	i;
 
+	if (!s)
+		return (NULL);
 	i = 0;
-	while (s[i] == c && s[i] != '\0')
-		i++;
-	if (i == (int)ft_strlen((char *) s))
-		return (arr_of_delim());
-	trimed = ft_strtrim(s, &c);
-	if (trimed == NULL)
+	ret = ft_calloc((ft_len(s, c) + 1), sizeof(char *));
+	if (!ret)
 		return (NULL);
-	res = create_arr(trimed, c);
-	if (res == NULL)
+	while (*s || (!*s && c == '\0'))
 	{
-		free(trimed);
-		return (NULL);
+		if (!process_substring(&ret, &s, c, &i))
+			return (NULL);
+		if (c == '\0')
+			break ;
 	}
-	res = fullfill_arr(trimed, c, res);
-	free(trimed);
-	if (res == NULL)
-		return (NULL);
-	return (res);
+	return (ret);
 }

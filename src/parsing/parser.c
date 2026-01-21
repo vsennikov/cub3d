@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:49 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 13:27:10 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:09:14 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,5 @@ void	init_map(t_data *data)
 	data->map->player_x = -1;
 	data->map->player_y = -1;
 	data->map->player_dir = 0;
+	data->parsed_file = NULL;
 }

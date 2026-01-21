@@ -6,11 +6,13 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:35:54 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:10:27 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:17:20 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+void	parsed_file_failed(char *line, t_data *data, int fd, int file_end);
 
 char	**parse_file(int fd, t_data *data)
 {
@@ -42,7 +44,11 @@ char	**read_file_lines(int fd, t_data *data, char **parsed_file,
 			exit_err_par("Error: Failed to read file\n", data, fd);
 		}
 		if (line)
+		{
 			parsed_file = add_line_to_array(parsed_file, line, &i, &capacity);
+			if (!parsed_file)
+				parsed_file_failed(line, data, fd, file_end);
+		}
 	}
 	return (parsed_file);
 }
@@ -57,7 +63,10 @@ char	**add_line_to_array(char **parsed_file, char *line, int *i,
 		*capacity *= 2;
 		temp_array = ft_calloc(*capacity, sizeof(char *));
 		if (!temp_array)
+		{
+			free_parsed_file(parsed_file);
 			return (NULL);
+		}
 		ft_memcpy(temp_array, parsed_file, *i * sizeof(char *));
 		free(parsed_file);
 		parsed_file = temp_array;
