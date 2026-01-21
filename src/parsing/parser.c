@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:49 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 13:23:44 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:27:10 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ int	parser(t_data *data, char *file)
 
 	init_map(data);
 	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit_err_par("Error: Cannot open file\n", NULL, 0);
 	if (fd < 0)
 		exit_err_par("Error: Cannot open file\n", data, fd);
 	parsed_file = parse_file(fd, data);
