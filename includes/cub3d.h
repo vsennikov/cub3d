@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:13:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 14:17:40 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:25:25 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,7 +264,7 @@ void				parsed_file_failed(char *line, t_data *data, int fd,
 						int file_end);
 
 // Parser configuration
-int					parse_color_component(char *str, t_data *data, int fd);
+int					parse_color_component(char *str);
 void				parse_color(char *line, char type, t_data *data, int fd);
 char				*extract_color_string(char *line);
 void				parse_color_components(char **components, char type,

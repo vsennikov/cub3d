@@ -6,22 +6,22 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:35:51 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 14:00:57 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:25:35 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	parse_color_component(char *str, t_data *data, int fd)
+int	parse_color_component(char *str)
 {
 	int	i;
 	int	result;
 
-	(void)data;
-	(void)fd;
 	i = 0;
 	result = 0;
 	if (!str || !*str)
+		return (-1);
+	if (ft_strlen(str) > 3)
 		return (-1);
 	while (str[i])
 	{

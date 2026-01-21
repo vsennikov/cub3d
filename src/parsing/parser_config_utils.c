@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:35:45 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 13:43:16 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:25:54 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	parse_component_at_index(char **components, int index, t_data *data, int fd)
 	if (!comp_trimmed)
 		free_components_and_exit(components, data, fd,
 			"Error: Memory allocation failed\n");
-	result = parse_color_component(comp_trimmed, data, fd);
+	result = parse_color_component(comp_trimmed);
 	free(comp_trimmed);
 	if (result == -1)
 		free_components_and_exit(components, data, fd,
