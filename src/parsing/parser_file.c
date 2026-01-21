@@ -6,13 +6,11 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:35:54 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 14:17:20 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:03:11 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-void	parsed_file_failed(char *line, t_data *data, int fd, int file_end);
 
 char	**parse_file(int fd, t_data *data)
 {

@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:27:46 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 14:19:54 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:03:33 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ static int	process_substring(char ***ret, const char **s, char c, size_t *i)
 		(*ret)[*i] = substr_extractor(s, c);
 		if (!(*ret)[*i])
 		{
-			ft_free_split(*ret);
+			free_split(*ret);
 			return (0);
 		}
 		(*i)++;
