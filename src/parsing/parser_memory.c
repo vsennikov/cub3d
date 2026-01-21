@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:31 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:10:36 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:46:56 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	exit_err_par(char *msg, t_data *data, int fd)
 		}
 	}
 	ft_putstr_fd(msg, 2);
-	if (fd > 0)
+	if (fd > 2)
 		close(fd);
 	exit(EXIT_FAILURE);
 }
