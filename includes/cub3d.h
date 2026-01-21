@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:13:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:22:27 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:24:31 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,10 +111,10 @@ typedef struct s_game
 // Data struct for parser compatibility
 typedef struct s_data
 {
-	t_map		*map;
-	t_player	*player;
-	void		*mlx;
-	char		**parsed_file;
+	t_map			*map;
+	t_player		*player;
+	void			*mlx;
+	char			**parsed_file;
 }					t_data;
 
 typedef struct s_ray
@@ -240,17 +240,15 @@ char				**add_line_to_array(char **parsed_file, char *line, int *i,
 						int *capacity);
 void				free_parsed_file(char **parsed_file);
 int					is_valid_texture_file(char *path, t_data *data, int fd);
-int					count_valid_map_lines(char **parsed_file, int start_idx,
-						t_data *data, int fd);
+int					count_valid_map_lines(int start_idx, t_data *data, int fd);
 void				allocate_map_memory(t_data *data, int map_lines, int fd);
-void				process_all_map_lines(char **parsed_file, int start_idx,
-						t_data *data, int fd, int map_lines);
+void				process_all_map_lines(int start_idx, t_data *data, int fd,
+						int map_lines);
 
 // Parser memory management
 void				init_map(t_data *data);
 void				init_map_flags(t_data *data);
-int					process_file_content(char **parsed_file, t_data *data,
-						int fd);
+int					process_file_content(t_data *data, int fd);
 void				free_textures(t_data *data);
 void				free_map_array(char **map);
 void				exit_err_par(char *msg, t_data *data, int fd);
@@ -302,13 +300,12 @@ int					is_valid_map_position(char c, int i, int j, int boundary);
 
 // Parser map utilities
 int					is_next_to_space(t_data *data, int i, int j);
-void				parse_map_data(char **parsed_file, int start_idx,
-						t_data *data, int fd);
+void				parse_map_data(int start_idx, t_data *data, int fd);
 void				process_map_line(char *line, t_data *data, int fd, int *i);
 void				finalize_map_parsing(t_data *data, int fd, int map_height);
 
 // Parser main phases
-int					parse_config(char **parsed_file, t_data *data, int fd);
+int					parse_config(t_data *data, int fd);
 void				parse_map_phase(char **parsed_file, int start_idx,
 						t_data *data, int fd);
 

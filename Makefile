@@ -23,7 +23,8 @@ RENDER_FILES = cleanup.c collision.c draw.c draw_floor_ceiling.c draw_map.c draw
 
 PARSE_FILES = parser_prep.c parser.c parser_file.c parser_memory.c parser_utils.c \
 			  parser_config.c parser_config_utils.c parser_config_texture.c \
-			  parser_config_colors.c parser_texture.c parser_map.c parser_map_utils.c
+			  parser_config_colors.c parser_texture.c parser_map.c parser_map_utils.c \
+			  parser_utils_2.c parser_map_utils_2.c
 
 GNL_FILES = get_next_line.c get_next_line_utils.c
 

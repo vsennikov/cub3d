@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:08:59 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 13:13:56 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,6 @@ char	*trim_newlines(char *str)
 	return (result);
 }
 
-int	is_valid_map_char(char c)
-{
-	return (c == '1' || c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == ' ');
-}
-
 int	check_line(char *line, char *identifier)
 {
 	int	i;
@@ -104,9 +98,4 @@ int	check_color_line(char *line, char *identifier)
 	if (line[i] && line[i] != '\n' && line[i] != '\r' && line[i] != '\0')
 		return (0);
 	return (1);
-}
-
-unsigned int	rgb_to_int(int r, int g, int b)
-{
-	return (((r & 0xFF) << 16) | ((g & 0xFF) << 8) | (b & 0xFF));
 }

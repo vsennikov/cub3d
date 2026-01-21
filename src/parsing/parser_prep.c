@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:35 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:12:31 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 12:54:24 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	name_validation(char *name)
 		{
 			extension = ft_substr(name, i, 5);
 			if (!extension)
-				basic_error_exit("memory allocation during name_validation failed");
+				basic_error_exit("ft_substr failed");
 			if (ft_strncmp(extension, ".cub", 5) != 0)
 			{
 				free(extension);
