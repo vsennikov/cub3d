@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:37:35 by vsenniko          #+#    #+#             */
-/*   Updated: 2025/12/27 17:12:47 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:37:38 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	ft_init_game(&game);
 	data.map = &game.mappy;
 	data.player = &game.player;
+	name_validation(argv[1]);
 	parser(&data, argv[1]);
 	init_mlx_part(&game);
 	data.mlx = game.mlx;
