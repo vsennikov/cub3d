@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 05:59:16 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:09:17 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/11 15:56:43 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ bool	check_collision(float px, float py, t_game *game)
 {
 	float	margin;
 
-	margin = 2.0;
+	margin = 16.0;
 	if (touch(px + margin, py + margin, game))
 		return (true);
 	if (touch(px - margin, py + margin, game))
@@ -58,6 +58,17 @@ bool	check_collision(float px, float py, t_game *game)
 	if (touch(px + margin, py - margin, game))
 		return (true);
 	if (touch(px - margin, py - margin, game))
+		return (true);
+	return (false);
+}
+
+bool	is_wall(int x, int y, t_game *game)
+{
+	if (x < 0 || x >= game->mappy.width || y < 0 || y >= game->mappy.height)
+		return (true);
+	if (!game->mappy.map || !game->mappy.map[y])
+		return (true);
+	if (game->mappy.map[y][x] == '1')
 		return (true);
 	return (false);
 }

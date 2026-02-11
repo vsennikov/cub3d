@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 17:13:44 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 15:41:12 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:08:27 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define DEBUG 0
 # define PI 3.14159265359
 # define BLOCK 64
 # define TEX_WIDTH 64
@@ -172,6 +171,7 @@ void				load_textures(t_game *game);
 void				load_texture(t_texture *tex, char *path, t_game *game);
 void				select_texture(t_dda *dda, t_wall *wall, t_game *game);
 unsigned int		get_texture_pixel(t_texture *tex, int x, int y);
+void				mlx_destroy_texture(t_game *game);
 
 /* Render functions */
 int					draw_loop(t_game *game);
@@ -192,6 +192,7 @@ void				draw_map(t_game *game);
 /* Collision functions */
 bool				touch(float px, float py, t_game *game);
 bool				check_collision(float px, float py, t_game *game);
+bool				is_wall(int x, int y, t_game *game);
 
 /* Movement functions */
 void				move_player(t_game *game);
@@ -211,7 +212,7 @@ void				put_pixel(int x, int y, int color, t_game *game);
 
 /* Cleanup functions */
 int					close_window(t_game *game);
-void				ft_free_mlx_allocation(t_game *game);
+void				destroy_textures(t_game *game);
 
 /* Error handling functions */
 // void			error_exit(char *message, t_game *game); // This

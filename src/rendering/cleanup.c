@@ -6,34 +6,15 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:13:19 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:11:39 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	destroy_textures(t_game *game)
+void	destroy_textures(t_game *game)
 {
-	if (game->mappy.tex_no.img)
-	{
-		mlx_destroy_image(game->mlx, game->mappy.tex_no.img);
-		game->mappy.tex_no.img = NULL;
-	}
-	if (game->mappy.tex_so.img)
-	{
-		mlx_destroy_image(game->mlx, game->mappy.tex_so.img);
-		game->mappy.tex_so.img = NULL;
-	}
-	if (game->mappy.tex_ea.img)
-	{
-		mlx_destroy_image(game->mlx, game->mappy.tex_ea.img);
-		game->mappy.tex_ea.img = NULL;
-	}
-	if (game->mappy.tex_we.img)
-	{
-		mlx_destroy_image(game->mlx, game->mappy.tex_we.img);
-		game->mappy.tex_we.img = NULL;
-	}
+	mlx_destroy_texture(game);
 	if (game->mappy.no)
 		free(game->mappy.no);
 	if (game->mappy.so)
@@ -84,9 +65,4 @@ int	close_window(t_game *game)
 	destroy_window(game);
 	destroy_display(game);
 	exit(EXIT_SUCCESS);
-}
-
-void	ft_free_mlx_allocation(t_game *game)
-{
-	close_window(game);
 }

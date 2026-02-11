@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:35 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 12:54:24 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/09 15:38:17 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	name_validation(char *name)
 	i = 0;
 	while (name[i])
 	{
-		if (name[i] == '.' && name[i + 4] == '\0')
+		if (name[i] == '.' && name[i + 4] == '\0' && i != 0)
 		{
 			extension = ft_substr(name, i, 5);
 			if (!extension)
@@ -34,7 +34,7 @@ int	name_validation(char *name)
 			if (ft_strncmp(extension, ".cub", 5) != 0)
 			{
 				free(extension);
-				basic_error_exit("map not .cub");
+				basic_error_exit("map format not .cub");
 			}
 			else
 				return (free(extension), 1);

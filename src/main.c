@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:37:35 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/01/21 15:37:38 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:51:39 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	main(int argc, char **argv)
 	init_mlx_part(&game);
 	data.mlx = game.mlx;
 	data.parsed_file = NULL;
+	printf("data ea = %s, data we = %s\n", data.map->ea, data.map->we);
 	load_textures(&game);
 	mlx_hook(game.win, 2, 1L << 0, key_press, &game);
 	mlx_hook(game.win, 3, 1L << 1, key_release, &game);

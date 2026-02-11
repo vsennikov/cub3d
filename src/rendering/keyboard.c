@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chrmarqu <chrmarqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 06:00:34 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:09:39 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:35:44 by chrmarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	key_press(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
-		ft_free_mlx_allocation(game);
+		close_window(game);
 	else if (keysym == XK_w)
 		game->player.player_up = true;
 	else if (keysym == XK_s)

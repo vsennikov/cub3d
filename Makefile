@@ -1,7 +1,7 @@
-NAME = cub3d
+NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 LIBMLX = -lmlx -lX11 -lXext -lm
 INCLUDES = -I includes -I libft -I minilibx -I .
 
@@ -16,9 +16,9 @@ LIBFT = $(LIBFT_PATH)/libft.a
 
 SRC_FILES = main.c
 
-RENDER_FILES = cleanup.c collision.c draw.c draw_floor_ceiling.c draw_map.c draw_wall.c \
+RENDER_FILES = cleanup.c collision.c draw.c draw_floor_ceiling.c draw_wall.c \
 			   error_handler.c init_game.c init_player.c keyboard.c math_utils.c \
-			   pixel_utils.c player_movement.c raycasting.c raycasting_dda.c render.c \
+			   pixel_utils.c player_movement.c raycasting_dda.c render.c \
 			   texture_loader.c texture_selector.c
 
 PARSE_FILES = parser_prep.c parser.c parser_file.c parser_memory.c parser_utils.c \

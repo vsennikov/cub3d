@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:10:07 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/11 17:52:46 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,28 @@ unsigned int	get_texture_pixel(t_texture *tex, int x, int y)
 	index = y * tex->line_len + x * (tex->bpp / 8);
 	pixel = tex->addr + index;
 	return (*(unsigned int *)pixel);
+}
+
+void	mlx_destroy_texture(t_game *game)
+{
+	if (game->mappy.tex_no.img)
+	{
+		mlx_destroy_image(game->mlx, game->mappy.tex_no.img);
+		game->mappy.tex_no.img = NULL;
+	}
+	if (game->mappy.tex_so.img)
+	{
+		mlx_destroy_image(game->mlx, game->mappy.tex_so.img);
+		game->mappy.tex_so.img = NULL;
+	}
+	if (game->mappy.tex_ea.img)
+	{
+		mlx_destroy_image(game->mlx, game->mappy.tex_ea.img);
+		game->mappy.tex_ea.img = NULL;
+	}
+	if (game->mappy.tex_we.img)
+	{
+		mlx_destroy_image(game->mlx, game->mappy.tex_we.img);
+		game->mappy.tex_we.img = NULL;
+	}
 }

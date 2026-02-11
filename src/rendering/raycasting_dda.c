@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_dda.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chrmarqu <chrmarqu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 06:01:25 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:09:59 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:26:03 by chrmarqu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,17 +56,6 @@ void	init_dda(t_dda *dda, t_player *player, float angle)
 	else
 		dda->delta_dist_y = fabs(1 / dda->ray_dir_y);
 	calculate_step_and_side_dist(dda, player);
-}
-
-static bool	is_wall(int x, int y, t_game *game)
-{
-	if (x < 0 || x >= game->mappy.width || y < 0 || y >= game->mappy.height)
-		return (true);
-	if (!game->mappy.map || !game->mappy.map[y])
-		return (true);
-	if (game->mappy.map[y][x] == '1')
-		return (true);
-	return (false);
 }
 
 void	perform_dda(t_dda *dda, t_game *game)

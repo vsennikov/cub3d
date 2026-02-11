@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:10:10 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/11 18:01:14 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,29 +23,29 @@ static void	calculate_wall_x(t_dda *dda, t_player *player)
 	dda->wall_x -= floor(dda->wall_x);
 }
 
-static t_texture	*get_texture_north_south(t_dda *dda, t_game *game)
-{
-	if (dda->ray_dir_x > 0)
-		return (&game->mappy.tex_so);
-	else
-		return (&game->mappy.tex_no);
-}
-
 static t_texture	*get_texture_east_west(t_dda *dda, t_game *game)
 {
-	if (dda->ray_dir_y > 0)
-		return (&game->mappy.tex_ea);
+	if (dda->ray_dir_x > 0)
+		return (&game->mappy.tex_we);		
 	else
-		return (&game->mappy.tex_we);
+		return (&game->mappy.tex_ea);
+}
+
+static t_texture	*get_texture_north_south(t_dda *dda, t_game *game)
+{
+	if (dda->ray_dir_y > 0)
+		return (&game->mappy.tex_no);
+	else
+		return (&game->mappy.tex_so);
 }
 
 void	select_texture(t_dda *dda, t_wall *wall, t_game *game)
 {
 	calculate_wall_x(dda, &game->player);
 	if (dda->side == 0)
-		wall->texture = get_texture_north_south(dda, game);
-	else
 		wall->texture = get_texture_east_west(dda, game);
+	else
+		wall->texture = get_texture_north_south(dda, game);
 	wall->tex_x = (int)(dda->wall_x * (float)wall->texture->width);
 	if ((dda->side == 0 && dda->ray_dir_x > 0) || (dda->side == 1
 			&& dda->ray_dir_y < 0))
