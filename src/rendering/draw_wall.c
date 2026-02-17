@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/18 05:59:56 by chmarque          #+#    #+#             */
-/*   Updated: 2025/12/27 17:09:07 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/17 08:19:41 by chmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	draw_wall_slice(t_wall *wall, int x, t_game *game)
 	y = wall->start_y;
 	while (y < wall->end_y)
 	{
-		tex_y = (int)tex_pos & (wall->texture->height - 1);
+		tex_y = (int)tex_pos % wall->texture->height;
 		tex_pos += step;
 		color = get_texture_pixel(wall->texture, wall->tex_x, tex_y);
 		put_pixel(x, y, color, game);
