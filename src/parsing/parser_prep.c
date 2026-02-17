@@ -6,7 +6,7 @@
 /*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 16:36:35 by vsenniko          #+#    #+#             */
-/*   Updated: 2026/02/11 19:30:15 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/17 17:11:55 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	name_validation(char *name)
 	i = 0;
 	while (name[i])
 	{
-		if (name[i] == '.' && name[i + 4] == '\0' && (i != 0 && name[i - 1] != '/'))
+		if (name[i] == '.' && name[i + 4] == '\0'
+			&& (i != 0 && name[i - 1] != '/'))
 		{
 			extension = ft_substr(name, i, 5);
 			if (!extension)

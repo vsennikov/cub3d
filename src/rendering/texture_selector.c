@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_selector.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2026/02/17 05:41:44 by chmarque         ###   ########.fr       */
+/*   Updated: 2026/02/17 17:11:04 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static void	calculate_wall_x(t_dda *dda, t_player *player)
 static t_texture	*get_texture_east_west(t_dda *dda, t_game *game)
 {
 	if (dda->ray_dir_x > 0)
-		return (&game->mappy.tex_we);		
+		return (&game->mappy.tex_we);
 	else
 		return (&game->mappy.tex_ea);
 }

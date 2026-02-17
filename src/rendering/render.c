@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 10:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2026/02/17 09:15:54 by chmarque         ###   ########.fr       */
+/*   Updated: 2026/02/17 17:10:57 by vsenniko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,6 @@ void	move_player(t_game *game)
 	{
 		new_x = game->player.x_player + (cos_angle * game->player.speed);
 		new_y = game->player.y_player + (sin_angle * game->player.speed);
-		/* if (!check_collision(new_x, new_y, game))
-		{
-			game->player.x_player = new_x;
-			game->player.y_player = new_y;
-		} */
 		if (!check_collision(new_x, game->player.y_player, game))
 			game->player.x_player = new_x;
 		if (!check_collision(game->player.x_player, new_y, game))
