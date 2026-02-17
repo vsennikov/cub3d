@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_loader.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vsenniko <vsenniko@student.42.fr>          +#+  +:+       +#+        */
+/*   By: chmarque <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 22:00:00 by chmarque          #+#    #+#             */
-/*   Updated: 2026/02/11 17:52:46 by vsenniko         ###   ########.fr       */
+/*   Updated: 2026/02/17 06:40:13 by chmarque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	load_texture(t_texture *tex, char *path, t_game *game)
 
 void	load_textures(t_game *game)
 {
-	init_texture_to_null(&game->mappy.tex_no);
-	init_texture_to_null(&game->mappy.tex_so);
-	init_texture_to_null(&game->mappy.tex_ea);
-	init_texture_to_null(&game->mappy.tex_we);
 	load_texture(&game->mappy.tex_no, game->mappy.no, game);
 	load_texture(&game->mappy.tex_so, game->mappy.so, game);
 	load_texture(&game->mappy.tex_ea, game->mappy.ea, game);
